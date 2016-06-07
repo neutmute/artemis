@@ -4,8 +4,11 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "frameworks": {
     "net451": { }
+  },
+  "dependencies": {
+    "artemis": "1.0.0-*",
+    "Neo4jClient": "1.1.0.32"
   }
 }
