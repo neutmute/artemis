@@ -30,7 +30,8 @@ namespace Artemis
     }
 
 
-    public class SearchTokenizerService<TSearchKeyOperator> : ISearchTokenizerService where TSearchKeyOperator : struct, IConvertible
+    public class SearchTokenizerService<TSearchKeyOperator> : ISearchTokenizerService 
+        where TSearchKeyOperator : struct, IConvertible
     {
         public const string KeyValueArrayDelimiter = "|";
 
@@ -64,9 +65,10 @@ namespace Artemis
                         
                         if (!Enum.TryParse(keyAsString, true, out keyAsEnum))
                         {
-                            //var keys =(TSearchKeyOperator[]) Enum.GetValues(typeof(TSearchKeyOperator));
-                            //var keyCsv = CsvConverter<TSearchKeyOperator>.GetCsv(keys, k => Enumeration.GetCode(k));
-                            throw new ApplicationException($"{keyAsString} is not a recognised search key.");
+                            var allowedKeys = ((TSearchKeyOperator[]) Enum.GetValues(typeof(TSearchKeyOperator))).ToList();
+                            allowedKeys.RemoveAll(m => Convert.ToInt32(m) == 0);
+                            var allowedKeyCsv = string.Join(", ", allowedKeys);
+                            throw new ApplicationException($"{keyAsString} is not a recognised search key. Valid values are: {allowedKeyCsv}");
                         }
                         
                         var keyValueTokenPair = new SearchKeyValuePairToken<TSearchKeyOperator> { Key = keyAsEnum, Value = operand.Value };
