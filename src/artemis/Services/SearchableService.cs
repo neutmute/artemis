@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Artemis
 {
-    public abstract class SearchableService<TSearchHeadEnum, TSearchQuery, TSearchResponse>
+    public interface ISearchableService<out TSearchResponse>
+    {
+        TSearchResponse Search(string searchText, SearchTextFormat format = SearchTextFormat.Structured);
+    }
+
+    public abstract class SearchableService<
+        TSearchHeadEnum
+        , TSearchQuery
+        , TSearchResponse> : ISearchableService<TSearchResponse> 
             where TSearchHeadEnum : struct, IConvertible
             where TSearchQuery : ISearchQuery<TSearchHeadEnum>, new() 
     {
