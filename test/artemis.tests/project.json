@@ -5,7 +5,6 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "frameworks": {
     "dnx451": {
       "dependencies": {
@@ -16,5 +15,8 @@
   },
   "commands": {
     "test": "xunit.runner.dnx"
+  },
+  "dependencies": {
+    "artemis": "1.0.0-*"
   }
 }
