@@ -14,6 +14,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "artemis", "src\artemis\arte
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "artemis.neo4j", "src\artemis.neo4j\artemis.neo4j.xproj", "{5C17E57A-AD8F-41B8-AA85-5AE83CC303B3}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "artemis.tests", "test\artemis.tests\artemis.tests.xproj", "{DB1D69D1-892D-439F-B24D-001C06E48299}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{34D16BC5-1381-4A0D-980F-A720C19BEF24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,10 @@ Global
 		{5C17E57A-AD8F-41B8-AA85-5AE83CC303B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C17E57A-AD8F-41B8-AA85-5AE83CC303B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C17E57A-AD8F-41B8-AA85-5AE83CC303B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1D69D1-892D-439F-B24D-001C06E48299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1D69D1-892D-439F-B24D-001C06E48299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1D69D1-892D-439F-B24D-001C06E48299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1D69D1-892D-439F-B24D-001C06E48299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +43,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{532EB5B4-252C-440F-9EB4-C2466BDCF79C} = {52098446-6EFE-42E2-B554-D5707C2DEC52}
 		{5C17E57A-AD8F-41B8-AA85-5AE83CC303B3} = {52098446-6EFE-42E2-B554-D5707C2DEC52}
+		{DB1D69D1-892D-439F-B24D-001C06E48299} = {34D16BC5-1381-4A0D-980F-A720C19BEF24}
 	EndGlobalSection
 EndGlobal
