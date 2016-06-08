@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Ader.Text;
 
 namespace Artemis
 {
@@ -18,13 +19,7 @@ namespace Artemis
             where TSearchHeadEnum : struct, IConvertible
             where TSearchQuery : ISearchQuery<TSearchHeadEnum>, new() 
     {
-        private readonly SearchTokenizerService<TSearchHeadEnum> _searchTokenizerService;
-
-        protected SearchableService()
-        {
-            _searchTokenizerService = new SearchTokenizerService<TSearchHeadEnum>();
-        }
-
+        
         public TSearchResponse Search(string searchText ,SearchTextFormat format = SearchTextFormat.Structured)
         {
             var tokens = ToTokens(searchText, format);
@@ -32,8 +27,19 @@ namespace Artemis
             return Search(query);
         }
 
+        /// <summary>
+        /// Allows consumers to intercept and transform search values - eg: enums from ints to text for neo4j 
+        /// </summary>
+        protected virtual void OnSearchTokenKeyValuePair(Token sourceToken, SearchKeyValuePairToken<TSearchHeadEnum> searchToken)
+        {
+            
+        }
+
         protected List<SearchToken> ToTokens(string searchText, SearchTextFormat format)
         {
+            var _searchTokenizerService = new SearchTokenizerService<TSearchHeadEnum>();
+            _searchTokenizerService.OnSearchTokenKeyValuePair = OnSearchTokenKeyValuePair;
+
             if (searchText == null)
             {
                 searchText = string.Empty;
@@ -57,7 +63,7 @@ namespace Artemis
             catch (Exception e)
             {
                 var message = $"Failed to convert '{searchText}' to tokens: " + e.Message;
-                throw new ApplicationException(message, e);
+                throw ArtemisException.Create(message, e);
             }
 
 

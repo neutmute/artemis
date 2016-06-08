@@ -41,9 +41,8 @@ namespace Artemis
         /// <remarks>
         /// Only use this exception if no suitable alternative exists - eg: use InvalidArgumentException if it is a better fit
         /// </remarks>
-        public static ArtemisException Create(string format, params object[] args)
+        public static ArtemisException Create(string message)
         {
-            string message = string.Format(format, args);
             ArtemisException exception = new ArtemisException(message);
             return exception;
         }
@@ -54,9 +53,8 @@ namespace Artemis
         /// <remarks>
         /// Only use this exception if no suitable alternative exists - eg: use InvalidArgumentException if it is a better fit
         /// </remarks>
-        public static ArtemisException Create(Exception innerException, string format, params object[] args)
+        public static ArtemisException Create(string message, Exception innerException)
         {
-            string message = string.Format(format, args);
             ArtemisException exception = new ArtemisException(message, innerException);
             return exception;
         }

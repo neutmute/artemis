@@ -10,7 +10,7 @@
 
 using System;
 
-namespace Ader.Text
+namespace Artemis
 {
     [Flags]
     public enum TokenKind

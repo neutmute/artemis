@@ -35,6 +35,8 @@ namespace Artemis
     {
         public const string KeyValueArrayDelimiter = "|";
 
+        public Action<Token, SearchKeyValuePairToken<TSearchKeyOperator>> OnSearchTokenKeyValuePair { get; set; }
+
         public List<SearchToken> ToTokens(string searchText)
         {
             Token token;
@@ -68,14 +70,15 @@ namespace Artemis
                             var allowedKeys = ((TSearchKeyOperator[]) Enum.GetValues(typeof(TSearchKeyOperator))).ToList();
                             allowedKeys.RemoveAll(m => Convert.ToInt32(m) == 0);
                             var allowedKeyCsv = string.Join(", ", allowedKeys);
-                            throw new ApplicationException($"{keyAsString} is not a recognised search key. Valid values are: {allowedKeyCsv}");
+                            throw ArtemisException.Create($"{keyAsString} is not a recognised search key. Valid values are: {allowedKeyCsv}");
                         }
                         
                         var keyValueTokenPair = new SearchKeyValuePairToken<TSearchKeyOperator> { Key = keyAsEnum, Value = operand.Value };
 
-                        if (operand.Kind == TokenKind.Number)
+                        // Allow transformation of search input values
+                        if (OnSearchTokenKeyValuePair != null)
                         {
-                            // Support some sort of call out here
+                            OnSearchTokenKeyValuePair(operand, keyValueTokenPair);
                         }
 
                         tokenList.Add(keyValueTokenPair);

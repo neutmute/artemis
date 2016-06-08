@@ -10,6 +10,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Artemis;
 
 namespace Ader.Text
 {
