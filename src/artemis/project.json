@@ -1,10 +1,11 @@
 ﻿{
   "version": "1.0.0-*",
   "description": "artemis Class Library",
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
-
+  "packOptions": {
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": ""
+  },
   "frameworks": {
     "net451": { }
   }

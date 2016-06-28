@@ -1,9 +1,11 @@
 ﻿{
   "version": "1.0.0-*",
   "description": "artemis.neo4j Class Library",
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "packOptions": {
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": ""
+  },
   "frameworks": {
     "net451": { }
   },
