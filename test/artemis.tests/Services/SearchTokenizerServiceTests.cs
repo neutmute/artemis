@@ -7,13 +7,6 @@ using Xunit;
 
 namespace Artemis.Tests
 {
-    public enum EntitySearchHead
-    {
-        Unspecified = 0,
-        Name,
-        State
-    }
-
     public class SearchTokenizerServiceTests
     {
         public SearchTokenizerService<EntitySearchHead> GetSystemUnderTest()

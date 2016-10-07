@@ -40,7 +40,7 @@ namespace Artemis
                 searchText = string.Empty;
             }
 
-            // Allow searches for acp\fatuser
+            // Allow searches for domain\fatuser
             searchText = searchText.Replace(@"\", @"\\");
 
             // strip special characters that would be interpreted in neo regex
