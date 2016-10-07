@@ -7,11 +7,6 @@ using Ader.Text;
 
 namespace Artemis
 {
-    public interface ISearchableService<out TSearchResponse>
-    {
-        TSearchResponse Search(string searchText, SearchTextFormat format = SearchTextFormat.Structured);
-    }
-
     public abstract class SearchableService<
         TSearchHeadEnum
         , TSearchQuery
