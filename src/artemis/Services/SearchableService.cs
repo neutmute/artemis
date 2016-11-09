@@ -15,7 +15,7 @@ namespace Artemis
             where TSearchQuery : ISearchQuery<TSearchHeadEnum>, new() 
     {
         
-        public TSearchResponse Search(string searchText ,SearchTextFormat format = SearchTextFormat.Structured)
+        public TSearchResponse Search(string searchText, SearchTextFormat format = SearchTextFormat.Structured)
         {
             var tokens = ToTokens(searchText, format);
             var query = ToSearchQuery(tokens);
