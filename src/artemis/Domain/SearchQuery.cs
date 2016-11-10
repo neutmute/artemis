@@ -5,11 +5,15 @@ namespace Artemis
 {
     public class SearchQuery<TSearchHeadEnum> : ISearchQuery<TSearchHeadEnum> where TSearchHeadEnum : struct, IConvertible
     {
+        public int MaximumResultCount { get; set; }
+
         public List<SearchPredicate<TSearchHeadEnum>> AndPredicates { get; set; }
+
         public bool HasPredicates => AndPredicates.Count > 0;
 
         public SearchQuery()
         {
+            MaximumResultCount = 0;
             AndPredicates = new List<SearchPredicate<TSearchHeadEnum>>();
         }
 
